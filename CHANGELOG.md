@@ -7,6 +7,85 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - Vector Database Indexing (2026-02-20)
+
+#### Qdrant Infrastructure
+- Created `scripts/01_setup_qdrant.py` - Qdrant collection initialization
+  - Connects to Qdrant cloud instance
+  - Creates collection `compliance_rag_v1` with 1024-dimensional vectors
+  - Supports recreate and no-recreate modes
+  - Includes connection testing with sample document
+- Successfully indexed 1,135 document chunks from 4 compliance documents
+- Average chunk size optimized for retrieval performance
+
+#### Indexing Pipeline
+- Updated `scripts/02_create_pipeline.py` for compliance documents
+  - Fixed PROJECT_ROOT path (scripts → root)
+  - Updated references from MCP to compliance documentation
+  - Pipeline includes: FileTypeRouter → Converters → Joiner → Cleaner → Splitter → Embedder → Writer
+- Updated `scripts/03_run_indexing.py` for compliance processing
+  - Removed unused `single_dir` parameter
+  - Processes files from `data/processed/` directory
+  - Supports test mode (2 docs, ~9 min) and full mode (4 docs, ~18 min)
+  - Updated all MCP references to compliance terminology
+
+#### RAG System
+- Created `scripts/04_test_rag_system.py` - Complete RAG pipeline testing
+  - Embedder → Retriever → Prompt Builder → LLM
+  - Added `required_variables` parameter to ChatPromptBuilder
+  - Fixed PROJECT_ROOT path for correct .env loading
+  - Generates compliance answers with precise citations
+  - Response time: ~6 seconds
+- Created `scripts/05_interactive_rag.py` - Interactive query interface
+  - Full RAG mode with LLM generation
+  - Retrieve-only mode for chunk inspection
+  - Fixed collection_name parameter consistency
+  - Updated system prompts for compliance expertise (CJIS, HIPAA, SOC 2, NIST)
+  - Updated example queries to compliance-specific questions
+
+#### Testing & Validation
+- Created `test_retrieval.py` - Retrieval validation script
+  - Tests semantic search with 3 compliance queries
+  - Added error handling to prevent KeyError
+  - Validates retrieval quality with relevance scores (0.71-0.75)
+  - Confirms document sources and content preview
+- All scripts tested and validated:
+  - ✅ Qdrant setup and connection
+  - ✅ Pipeline creation (9 components, 10 connections)
+  - ✅ Document indexing (1,135 chunks)
+  - ✅ Retrieval (high relevance scores)
+  - ✅ RAG system (comprehensive answers with citations)
+
+#### Dependencies
+- Added `google-genai-haystack>=3.1.0` - Google Gemini LLM integration
+- Added `markdown-it-py>=3.0.0` - Markdown processing
+- Added `mdit_plain>=1.0.1` - Plain text conversion
+
+#### Configuration
+- Updated all scripts to use `compliance_rag_v1` collection name
+- Fixed PROJECT_ROOT paths across all scripts for consistency
+- Updated system prompts to reference compliance frameworks
+
+### Changed - Vector Database Indexing (2026-02-20)
+- Updated all MCP references to Compliance RAG terminology
+- Fixed PROJECT_ROOT path from `SCRIPT_DIR.parent.parent` to `SCRIPT_DIR.parent`
+- Removed unused `single_dir` parameter from indexing functions
+- Updated collection name defaults from `mcp_phase1_baseline` to `compliance_rag_v1`
+- Updated example queries from MCP-specific to compliance-specific
+- Enhanced error handling in retrieval scripts
+
+### Statistics - Vector Database Indexing
+- **Documents Indexed:** 4 compliance documents
+- **Total Chunks:** 1,135 document chunks
+- **Embedding Dimension:** 1024
+- **Test Mode Processing Time:** ~9.4 minutes (2 documents, 553 chunks)
+- **Full Mode Processing Time:** ~18 minutes (4 documents, 1,135 chunks)
+- **Retrieval Relevance Scores:** 0.71-0.75 (high quality)
+- **RAG Response Time:** ~6.19 seconds
+- **Scripts Added/Updated:** 5 scripts
+- **Git Commits:** 11 commits on feature branch
+- **PR Reviews:** All feedback addressed
+
 ### Added - Data Preparation Pipeline (2026-02-20)
 
 #### Project Structure
