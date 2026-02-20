@@ -4,6 +4,7 @@ haystack-ai>=2.16.1
 # Haystack Integrations
 qdrant-haystack>=9.2.0
 fastembed-haystack>=1.5.0
+google-genai-haystack>=3.1.0
 
 # PDF Processing
 pypdf>=3.17.4
