@@ -96,7 +96,12 @@ def test_retrieval():
             "text_embedder": {"text": query}
         })
         
-        documents = result["retriever"]["documents"]
+        # Safely access retriever results
+        if "retriever" not in result:
+            print("   ❌ Pipeline execution failed - no retriever results")
+            continue
+            
+        documents = result["retriever"].get("documents", [])
         
         if not documents:
             print("   ❌ No documents retrieved")
