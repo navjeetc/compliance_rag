@@ -1,0 +1,18 @@
+# Core Haystack
+haystack-ai>=2.16.1
+
+# Haystack Integrations
+qdrant-haystack>=9.2.0
+fastembed-haystack>=1.5.0
+
+# PDF Processing
+pypdf>=3.17.4
+
+# Embeddings
+fastembed>=0.7.1
+
+# Utilities
+python-dotenv>=1.1.1
+tqdm>=4.67.1
+pydantic>=2.11.7
+pydantic-settings>=2.10.1
