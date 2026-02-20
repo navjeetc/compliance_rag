@@ -27,9 +27,9 @@ from typing import List
 from dotenv import load_dotenv
 from tqdm import tqdm
 
-# Get project root (script -> rag_pipeline -> week1_foundations -> root)
+# Get project root (script -> scripts -> root)
 SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SCRIPT_DIR.parent.parent
+PROJECT_ROOT = SCRIPT_DIR.parent
 
 # Import from renamed module in current directory
 import sys
