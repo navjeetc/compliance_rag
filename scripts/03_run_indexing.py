@@ -49,7 +49,7 @@ create_pipeline_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(create_pipeline_module)
 create_fastembed_indexing_pipeline = create_pipeline_module.create_fastembed_indexing_pipeline
 
-def get_file_subset(data_dir: str, test_mode: bool = True, single_dir: str = None) -> List[str]:
+def get_file_subset(data_dir: str, test_mode: bool = True) -> List[str]:
     """
     Get list of processed compliance documents to index.
     Uses preprocessed text files from data/processed/ directory.
@@ -57,7 +57,6 @@ def get_file_subset(data_dir: str, test_mode: bool = True, single_dir: str = Non
     Args:
         data_dir (str): Path to data directory
         test_mode (bool): If True, return small subset for testing
-        single_dir (str): If specified, only process files from this single subdirectory
         
     Returns:
         List[str]: List of file paths to process
@@ -94,14 +93,13 @@ def get_file_subset(data_dir: str, test_mode: bool = True, single_dir: str = Non
         print(f"\n🚀 FULL MODE: Processing all {len(txt_files)} documents")
         return [str(f) for f in txt_files]
 
-def run_fastembed_indexing(collection_name: str = None, test_mode: bool = True, single_dir: str = None):
+def run_fastembed_indexing(collection_name: str = None, test_mode: bool = True):
     """
     Run the FastEmbed indexing pipeline.
     
     Args:
         collection_name (str): Custom collection name
         test_mode (bool): If True, process only subset of files
-        single_dir (str): If specified, process only files from this directory (e.g., 'processed')
     """
     load_dotenv(PROJECT_ROOT / ".env")
 
@@ -109,7 +107,7 @@ def run_fastembed_indexing(collection_name: str = None, test_mode: bool = True, 
     data_dir = str(PROJECT_ROOT / "data")
 
     print(f"📂 Looking for data in: {data_dir}")
-    files_to_process = get_file_subset(data_dir, test_mode, single_dir)
+    files_to_process = get_file_subset(data_dir, test_mode)
     
     if not files_to_process:
         print("❌ No files found to process!")
@@ -176,7 +174,6 @@ def main():
     parser.add_argument("--collection", help="Custom collection name")
     parser.add_argument("--full", action="store_true", help="Process all files (4 compliance documents, ~10 minutes)")
     parser.add_argument("--test", action="store_true", help="Process test subset only (2 documents, ~5 minutes) [DEFAULT]")
-    parser.add_argument("--single-dir", help="Process only files from single directory (e.g., 'processed')")
     
     args = parser.parse_args()
     
@@ -190,8 +187,6 @@ def main():
     print("=" * 50)
     
     mode_str = "TEST (subset)" if test_mode else "FULL (all files)"
-    if args.single_dir:
-        mode_str = f"SINGLE DIR: {args.single_dir}"
     print(f"🎯 Mode: {mode_str}")
     
     if args.collection:
@@ -200,8 +195,7 @@ def main():
     try:
         result = run_fastembed_indexing(
             collection_name=args.collection,
-            test_mode=test_mode,
-            single_dir=args.single_dir
+            test_mode=test_mode
         )
         
         print("\n🎉 Indexing completed successfully!")
