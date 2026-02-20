@@ -19,10 +19,10 @@ The compliance RAG corpus consists of 4 high-quality regulatory documents totali
 
 | Document | Format | Size (MB) | Characters | Status |
 |----------|--------|-----------|------------|--------|
-| CJIS Security Policy v6.0 | PDF | 4.35 | 1,246,196 | ✅ Processed |
-| NIST SP 800-53 Rev 5.1 | PDF | 2.96 | 1,006,372 | ✅ Processed |
-| SOC 2 Compliance | PDF | 1.26 | 527,006 | ✅ Processed |
-| HIPAA Simplification | PDF | 0.79 | 390,956 | ✅ Processed |
+| CJIS Security Policy v6.0 | PDF | 4.35 | 1,098,415 | ✅ Processed |
+| NIST SP 800-53 Rev 5.1 | PDF | 2.96 | 1,246,196 | ✅ Processed |
+| HIPAA Simplification | PDF | 0.79 | 434,963 | ✅ Processed |
+| SOC 2 Compliance | PDF | 1.26 | 390,956 | ✅ Processed |
 | **TOTAL** | | **9.36** | **3,170,530** | |
 
 ### Distribution Analysis
