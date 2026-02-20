@@ -104,7 +104,10 @@ def create_complete_rag_pipeline(collection_name: str = None):
 Question: {{ question }}""")
     ]
     
-    pipeline.add_component("prompt_builder", ChatPromptBuilder(template=template))
+    pipeline.add_component("prompt_builder", ChatPromptBuilder(
+        template=template,
+        required_variables=["documents", "question"]
+    ))
     
     # 4. GoogleGenAI Chat Generator - EXACT same as working simple test
     pipeline.add_component("llm", GoogleGenAIChatGenerator(model=llm_model))
