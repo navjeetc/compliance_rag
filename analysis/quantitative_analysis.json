@@ -1,0 +1,106 @@
+{
+  "raw_documents": {
+    "count": 4,
+    "files": [
+      {
+        "name": "hipaa.pdf",
+        "size_bytes": 829021,
+        "size_mb": 0.79
+      },
+      {
+        "name": "SOC2.pdf",
+        "size_bytes": 1321335,
+        "size_mb": 1.26
+      },
+      {
+        "name": "cjis.pdf",
+        "size_bytes": 4557293,
+        "size_mb": 4.35
+      },
+      {
+        "name": "nist.pdf",
+        "size_bytes": 3102787,
+        "size_mb": 2.96
+      }
+    ],
+    "total_size_bytes": 9810436,
+    "total_size_mb": 9.36
+  },
+  "extracted_documents": {
+    "count": 4,
+    "files": [
+      {
+        "name": "nist.txt",
+        "characters": 1282724,
+        "lines": 16696,
+        "words": 168316
+      },
+      {
+        "name": "cjis.txt",
+        "characters": 1152334,
+        "lines": 18602,
+        "words": 156836
+      },
+      {
+        "name": "hipaa.txt",
+        "characters": 470012,
+        "lines": 15043,
+        "words": 67510
+      },
+      {
+        "name": "SOC2.txt",
+        "characters": 391181,
+        "lines": 5538,
+        "words": 57650
+      }
+    ],
+    "total_characters": 3296251,
+    "character_distribution": {
+      "min": 391181,
+      "max": 1282724,
+      "average": 824063.0
+    }
+  },
+  "processed_documents": {
+    "count": 4,
+    "files": [
+      {
+        "name": "nist.txt",
+        "characters": 1246196,
+        "lines": 16694,
+        "words": 168138
+      },
+      {
+        "name": "cjis.txt",
+        "characters": 1098415,
+        "lines": 18314,
+        "words": 156144
+      },
+      {
+        "name": "hipaa.txt",
+        "characters": 434963,
+        "lines": 14911,
+        "words": 66853
+      },
+      {
+        "name": "SOC2.txt",
+        "characters": 390956,
+        "lines": 5489,
+        "words": 57571
+      }
+    ],
+    "total_characters": 3170530,
+    "character_distribution": {
+      "min": 390956,
+      "max": 1246196,
+      "average": 792632.0
+    }
+  },
+  "statistics": {
+    "extraction_to_processing_reduction": {
+      "characters_removed": 125721,
+      "percentage": 3.81
+    }
+  },
+  "duplicates": []
+}
