@@ -1,0 +1,34 @@
+[
+  {
+    "filename": "nist.txt",
+    "error": "Expecting value: line 5 column 15 (char 88)",
+    "analysis": {
+      "overall_quality": 0
+    },
+    "source_directory": "processed"
+  },
+  {
+    "filename": "cjis.txt",
+    "error": "Expecting ',' delimiter: line 5 column 17 (char 90)",
+    "analysis": {
+      "overall_quality": 0
+    },
+    "source_directory": "processed"
+  },
+  {
+    "filename": "hipaa.txt",
+    "error": "Expecting ',' delimiter: line 5 column 17 (char 90)",
+    "analysis": {
+      "overall_quality": 0
+    },
+    "source_directory": "processed"
+  },
+  {
+    "filename": "SOC2.txt",
+    "error": "Unterminated string starting at: line 6 column 5 (char 96)",
+    "analysis": {
+      "overall_quality": 0
+    },
+    "source_directory": "processed"
+  }
+]
