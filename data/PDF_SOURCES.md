@@ -2,31 +2,36 @@
 
 This document contains links to the compliance PDF files used in this project. The PDFs are stored in Google Drive for easy access and sharing.
 
+## Google Drive Folder
+
+**All PDFs are available in this public folder:**  
+https://drive.google.com/drive/folders/1GQM54O5lpZLKA6zmkiUotpd0HESRQ6_U
+
 ## PDF Files
 
 ### 1. CJIS Security Policy v6.0
-- **Filename:** `CJIS_Security_Policy_v6-0.pdf`
+- **Filename:** `cjis.pdf`
 - **Description:** Criminal Justice Information Services (CJIS) Security Policy
-- **Google Drive Link:** [Add your Google Drive link here]
-- **Local Path:** `data/raw/CJIS_Security_Policy_v6-0.pdf`
+- **Google Drive:** Available in the folder above
+- **Local Path:** `data/raw/cjis.pdf`
 
 ### 2. SOC 2 Compliance
 - **Filename:** `SOC2.pdf`
 - **Description:** SOC 2 (Service Organization Control 2) compliance documentation
-- **Google Drive Link:** [Add your Google Drive link here]
+- **Google Drive:** Available in the folder above
 - **Local Path:** `data/raw/SOC2.pdf`
 
 ### 3. NIST SP 800-53
-- **Filename:** `SP_800-53_v5_1-derived-OSCAL.pdf`
+- **Filename:** `nist.pdf`
 - **Description:** NIST Special Publication 800-53 Revision 5.1 - Security and Privacy Controls
-- **Google Drive Link:** [Add your Google Drive link here]
-- **Local Path:** `data/raw/SP_800-53_v5_1-derived-OSCAL.pdf`
+- **Google Drive:** Available in the folder above
+- **Local Path:** `data/raw/nist.pdf`
 
 ### 4. HIPAA Simplification
-- **Filename:** `hipaa-simplification-201303.pdf`
+- **Filename:** `hipaa.pdf`
 - **Description:** HIPAA (Health Insurance Portability and Accountability Act) simplification guide
-- **Google Drive Link:** [Add your Google Drive link here]
-- **Local Path:** `data/raw/hipaa-simplification-201303.pdf`
+- **Google Drive:** Available in the folder above
+- **Local Path:** `data/raw/hipaa.pdf`
 
 ## Setup Instructions
 
