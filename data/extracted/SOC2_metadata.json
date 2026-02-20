@@ -1,0 +1,10 @@
+{
+  "title": "SOC 2 Compliance",
+  "type": "compliance_standard",
+  "source": "Service Organization Control 2",
+  "url": "https://drive.google.com/drive/folders/1GQM54O5lpZLKA6zmkiUotpd0HESRQ6_U",
+  "extraction_date": "2026-02-20T13:34:15.397244",
+  "original_filename": "SOC2.pdf",
+  "text_length": 391181,
+  "output_file": "SOC2.txt"
+}

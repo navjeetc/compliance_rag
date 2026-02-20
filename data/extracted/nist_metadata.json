@@ -1,0 +1,10 @@
+{
+  "title": "NIST SP 800-53 Rev 5.1",
+  "type": "compliance_standard",
+  "source": "National Institute of Standards and Technology",
+  "url": "https://drive.google.com/drive/folders/1GQM54O5lpZLKA6zmkiUotpd0HESRQ6_U",
+  "extraction_date": "2026-02-20T13:34:42.586345",
+  "original_filename": "nist.pdf",
+  "text_length": 1282724,
+  "output_file": "nist.txt"
+}

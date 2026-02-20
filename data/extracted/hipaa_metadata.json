@@ -1,0 +1,10 @@
+{
+  "title": "HIPAA Simplification",
+  "type": "compliance_standard",
+  "source": "Health Insurance Portability and Accountability Act",
+  "url": "https://drive.google.com/drive/folders/1GQM54O5lpZLKA6zmkiUotpd0HESRQ6_U",
+  "extraction_date": "2026-02-20T13:34:24.033429",
+  "original_filename": "hipaa.pdf",
+  "text_length": 470012,
+  "output_file": "hipaa.txt"
+}
