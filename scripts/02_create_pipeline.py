@@ -41,9 +41,9 @@ from haystack_integrations.components.embedders.fastembed import FastembedDocume
 from haystack_integrations.document_stores.qdrant import QdrantDocumentStore
 from haystack.utils import Secret
 
-# Get project root (script -> rag_pipeline -> week1_foundations -> root)
+# Get project root (script -> scripts -> root)
 SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SCRIPT_DIR.parent.parent
+PROJECT_ROOT = SCRIPT_DIR.parent
 
 def load_environment():
     """Load environment variables."""
@@ -169,7 +169,7 @@ def create_fastembed_indexing_pipeline(collection_name: str = None):
     pipeline.connect("fastembed_embedder.documents", "document_writer.documents")
     
     print("✅ FastEmbed indexing pipeline created successfully!")
-    print("🚀 Ready to process MCP documentation without rate limits!")
+    print("🚀 Ready to process compliance documentation without rate limits!")
     
     return pipeline, env_config
 
