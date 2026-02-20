@@ -101,7 +101,7 @@ def run_fastembed_indexing(collection_name: str = None, test_mode: bool = True, 
     Args:
         collection_name (str): Custom collection name
         test_mode (bool): If True, process only subset of files
-        single_dir (str): If specified, process only files from this directory (e.g., 'mcp_python_sdk_filtered')
+        single_dir (str): If specified, process only files from this directory (e.g., 'processed')
     """
     load_dotenv(PROJECT_ROOT / ".env")
 
@@ -172,11 +172,11 @@ def main():
     """Main function with command line options."""
     import argparse
     
-    parser = argparse.ArgumentParser(description="Run FastEmbed indexing for MCP RAG")
+    parser = argparse.ArgumentParser(description="Run FastEmbed indexing for Compliance RAG")
     parser.add_argument("--collection", help="Custom collection name")
-    parser.add_argument("--full", action="store_true", help="Process all files (~250 files, 5-10 minutes)")
-    parser.add_argument("--test", action="store_true", help="Process test subset only (~13 files, 30-60 seconds) [DEFAULT]")
-    parser.add_argument("--single-dir", help="Process only files from single directory (e.g., 'mcp_python_sdk_filtered')")
+    parser.add_argument("--full", action="store_true", help="Process all files (4 compliance documents, ~10 minutes)")
+    parser.add_argument("--test", action="store_true", help="Process test subset only (2 documents, ~5 minutes) [DEFAULT]")
+    parser.add_argument("--single-dir", help="Process only files from single directory (e.g., 'processed')")
     
     args = parser.parse_args()
     
@@ -186,7 +186,7 @@ def main():
     else:
         test_mode = True  # Default to test mode
     
-    print("🚀 FastEmbed Indexing for MCP RAG")
+    print("🚀 FastEmbed Indexing for Compliance RAG")
     print("=" * 50)
     
     mode_str = "TEST (subset)" if test_mode else "FULL (all files)"

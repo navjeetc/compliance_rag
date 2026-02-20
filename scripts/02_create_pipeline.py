@@ -169,7 +169,7 @@ def create_fastembed_indexing_pipeline(collection_name: str = None):
     pipeline.connect("fastembed_embedder.documents", "document_writer.documents")
     
     print("✅ FastEmbed indexing pipeline created successfully!")
-    print("🚀 Ready to process MCP documentation without rate limits!")
+    print("🚀 Ready to process compliance documentation without rate limits!")
     
     return pipeline, env_config
 

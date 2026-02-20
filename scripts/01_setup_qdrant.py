@@ -64,7 +64,7 @@ def load_environment() -> dict:
 
 def create_qdrant_document_store(collection_name: str = None, recreate_index: bool = True) -> QdrantDocumentStore:
     """
-    Create and configure QdrantDocumentStore for MCP documentation.
+    Create and configure QdrantDocumentStore for compliance documentation.
     
     Args:
         collection_name (str): Custom collection name (overrides env var if provided)
