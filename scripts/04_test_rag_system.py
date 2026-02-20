@@ -35,9 +35,9 @@ from haystack_integrations.components.generators.google_genai import GoogleGenAI
 from haystack_integrations.document_stores.qdrant import QdrantDocumentStore
 from haystack.utils import Secret
 
-# Get project root (script -> rag_pipeline -> week1_foundations -> root)
+# Get project root (script -> scripts -> root)
 SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SCRIPT_DIR.parent.parent
+PROJECT_ROOT = SCRIPT_DIR.parent
 
 def create_complete_rag_pipeline(collection_name: str = None):
     """
