@@ -46,7 +46,7 @@ def create_complete_rag_pipeline(collection_name: str = None):
     load_dotenv(PROJECT_ROOT / ".env")
     
     # Configuration
-    collection_name = collection_name or os.getenv("QDRANT_COLLECTION_PHASE1", "mcp_phase1_baseline")
+    collection_name = collection_name or os.getenv("QDRANT_COLLECTION_PHASE1", "compliance_rag_v1")
     fastembed_model = os.getenv("FASTEMBED_MODEL", "BAAI/bge-large-en-v1.5")
     llm_model = os.getenv("LLM_MODEL", "gemini-2.5-flash")
     
@@ -94,7 +94,7 @@ def create_complete_rag_pipeline(collection_name: str = None):
     
     # 3. Chat Prompt Builder - SIMPLIFIED like working version
     template = [
-        ChatMessage.from_system("You are an expert assistant for the Model Context Protocol (MCP). Use the provided context to answer questions about MCP implementation and concepts. Provide accurate, practical answers based on the context."),
+        ChatMessage.from_system("You are an expert compliance assistant specializing in CJIS, HIPAA, SOC 2, and NIST SP 800-53 requirements. Use the provided context to answer questions about compliance requirements with precise citations. Provide accurate, authoritative answers based on the regulatory documents."),
         ChatMessage.from_user("""Context:
 {% for document in documents %}
 {{ document.content }}
@@ -277,7 +277,7 @@ def main():
         pipeline = create_complete_rag_pipeline(collection_name=args.collection)
         
         # Test with a query
-        test_query = args.query or "How do I implement an MCP server?"
+        test_query = args.query or "What are the CJIS access control requirements?"
         
         success = test_complete_rag_pipeline(pipeline, test_query)
         

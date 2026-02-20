@@ -133,7 +133,7 @@ def test_connection(document_store: QdrantDocumentStore) -> bool:
             from haystack.dataclasses import Document
             
             test_doc = Document(
-                content="This is a test document for MCP RAG system.",
+                content="This is a test document for Compliance RAG system.",
                 meta={"test": True, "source": "connection_test"}
             )
             
@@ -155,7 +155,7 @@ def test_connection(document_store: QdrantDocumentStore) -> bool:
 
 def main():
     """Main function to setup and test Qdrant Document Store with command line support."""
-    parser = argparse.ArgumentParser(description="Setup Qdrant Document Store for MCP RAG")
+    parser = argparse.ArgumentParser(description="Setup Qdrant Document Store for Compliance RAG")
     parser.add_argument("--collection", help="Custom collection name (overrides .env setting)")
     parser.add_argument("--no-recreate", action="store_true", help="Don't recreate index (connect to existing)")
     
@@ -165,7 +165,7 @@ def main():
     collection_name = args.collection
     recreate_index = not args.no_recreate
     
-    print("🚀 Phase 1: Setting up Qdrant Document Store for MCP RAG")
+    print("🚀 Phase 1: Setting up Qdrant Document Store for Compliance RAG")
     if collection_name:
         print(f"🎯 Using custom collection: {collection_name}")
     else:

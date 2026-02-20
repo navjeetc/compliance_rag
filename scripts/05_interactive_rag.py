@@ -8,11 +8,11 @@
 # ============================================================================
 
 """
-Interactive RAG System - Query Your MCP Knowledge Base
-=======================================================
+Interactive RAG System - Query Your Compliance Knowledge Base
+==============================================================
 
 An interactive interface to explore your RAG system.
-Ask questions about MCP and see the full pipeline in action!
+Ask questions about compliance requirements (CJIS, HIPAA, SOC2, NIST) and see the full pipeline in action!
 
 Usage:
     # Full RAG mode (retrieve + generate)
@@ -67,7 +67,7 @@ def create_retrieval_pipeline(collection_name: str = None, top_k: int = 5):
     load_dotenv(PROJECT_ROOT / ".env")
 
     # Configuration from environment
-    collection_name = collection_name or os.getenv("QDRANT_COLLECTION_PHASE1", "mcp_phase1_baseline")
+    collection_name = collection_name or os.getenv("QDRANT_COLLECTION_PHASE1", "compliance_rag_v1")
     fastembed_model = os.getenv("FASTEMBED_MODEL", "BAAI/bge-large-en-v1.5")
 
     print("Setting up retrieval pipeline (no LLM)...")
@@ -122,7 +122,7 @@ def create_rag_pipeline(collection_name: str = None, llm_model: str = None):
     load_dotenv(PROJECT_ROOT / ".env")
 
     # Configuration from environment
-    collection_name = collection_name or os.getenv("QDRANT_COLLECTION_PHASE1", "mcp_phase1_baseline")
+    collection_name = collection_name or os.getenv("QDRANT_COLLECTION_PHASE1", "compliance_rag_v1")
     fastembed_model = os.getenv("FASTEMBED_MODEL", "BAAI/bge-large-en-v1.5")
     llm_model = llm_model or os.getenv("LLM_MODEL", "gemini-2.5-flash")
 
@@ -161,9 +161,9 @@ def create_rag_pipeline(collection_name: str = None, llm_model: str = None):
     # 3. Prompt Builder - system message + context + question
     template = [
         ChatMessage.from_system(
-            "You are an expert assistant for the Model Context Protocol (MCP). "
-            "Use the provided context to answer questions about MCP implementation and concepts. "
-            "Provide accurate, practical answers based on the context."
+            "You are an expert compliance assistant specializing in CJIS, HIPAA, SOC 2, and NIST SP 800-53 requirements. "
+            "Use the provided context to answer questions about compliance requirements with precise citations. "
+            "Provide accurate, authoritative answers based on the regulatory documents."
         ),
         ChatMessage.from_user("""Context:
 {% for document in documents %}
@@ -420,16 +420,16 @@ def retrieve_and_inspect(pipeline: Pipeline, question: str) -> None:
 def retrieve_only_loop(pipeline: Pipeline) -> None:
     """Interactive loop for retrieve-only mode (no LLM generation)."""
     print("=" * 60)
-    print("  MCP RAG System - Retrieve Only Mode")
+    print("  Compliance RAG System - Retrieve Only Mode")
     print("=" * 60)
     print("\nThis mode shows retrieved chunks WITHOUT LLM generation.")
     print("Use this to inspect what the retriever returns for your queries.")
     print("\nCommands:")
     print("  'quit' or 'exit' - Stop the program")
     print("\nExample queries:")
-    print("  - How do I implement an MCP server?")
-    print("  - What transport mechanisms does MCP support?")
-    print("  - MCP authentication")
+    print("  - What are the CJIS access control requirements?")
+    print("  - What are HIPAA authentication requirements?")
+    print("  - What are SOC 2 audit logging requirements?")
     print()
 
     while True:
@@ -457,18 +457,18 @@ def retrieve_only_loop(pipeline: Pipeline) -> None:
 def print_welcome(current_model: str):
     """Display welcome message and example queries."""
     print("=" * 60)
-    print("  MCP RAG System - Interactive Mode")
+    print("  Compliance RAG System - Interactive Mode")
     print("=" * 60)
     print(f"\nCurrent LLM: {current_model}")
-    print("\nAsk questions about the Model Context Protocol (MCP).")
+    print("\nAsk questions about compliance requirements (CJIS, HIPAA, SOC 2, NIST SP 800-53).")
     print("Commands:")
     print("  'quit' or 'exit' - Stop the program")
     print("  'model'          - Switch to a different LLM")
     print("\nExample questions to try:")
-    print("  - What is MCP and why was it created?")
-    print("  - How do I implement an MCP server in Python?")
-    print("  - What are MCP tools and how do they work?")
-    print("  - What transport mechanisms does MCP support?")
+    print("  - What are the CJIS access control requirements?")
+    print("  - What are the HIPAA encryption requirements?")
+    print("  - What are the SOC 2 audit logging requirements?")
+    print("  - What NIST controls apply to authentication?")
     print()
 
 
@@ -549,7 +549,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Interactive RAG System for MCP",
+        description="Interactive RAG System for Compliance Documents",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Available models: {', '.join(AVAILABLE_MODELS)}
@@ -574,7 +574,7 @@ Examples:
 
     try:
         load_dotenv(PROJECT_ROOT / ".env")
-        collection_name = args.collection or os.getenv("QDRANT_COLLECTION_PHASE1", "mcp_phase1_baseline")
+        collection_name = args.collection or os.getenv("QDRANT_COLLECTION_PHASE1", "compliance_rag_v1")
 
         if args.retrieve_only:
             # Retrieve-only mode: no LLM needed
