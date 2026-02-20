@@ -586,7 +586,7 @@ Examples:
         else:
             # Full RAG mode
             pipeline, current_model = create_rag_pipeline(
-                collection_name=args.collection,
+                collection_name=collection_name,
                 llm_model=args.model
             )
             interactive_loop(pipeline, current_model, collection_name)
