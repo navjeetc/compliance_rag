@@ -18,7 +18,7 @@ Usage:
     python setup_qdrant_store.py
     
     # Custom collection for testing
-    python setup_qdrant_store.py --collection mcp_large_test
+    python setup_qdrant_store.py --collection compliance_rag_test
 """
 
 import os
