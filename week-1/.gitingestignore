@@ -1,0 +1,27 @@
+# Exclude large data files from gitingest submission
+data/raw/
+data/processed/
+data/extracted/
+
+# Exclude binary and large files
+*.pdf
+*.parquet
+*.csv
+*.npy
+*.bin
+*.pkl
+*.pyc
+
+# Exclude environment and cache
+.env
+__pycache__/
+.venv/
+venv/
+*.egg-info/
+
+# Exclude trace JSON files (we have trace.md summary)
+traces/*.json
+
+# Exclude analysis outputs
+analysis/*.json
+analysis/*.parquet
