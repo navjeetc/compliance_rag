@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - Trace Capture System (2026-02-20)
+
+#### Session Trace Capture
+- Created `scripts/06_capture_traces.py` - Interactive RAG with trace capture
+  - Captures questions, retrieved chunks, and generated answers
+  - Saves traces as JSON files in `traces/session_YYYYMMDD_HHMMSS.json` format
+  - Supports both full RAG and retrieve-only modes
+  - Based on RAG Accelerator Week 2 trace capture methodology
+  - Records query timing, relevance scores, and chunk metadata
+- Created `docs/trace_capture.md` - Comprehensive trace capture documentation
+  - Usage examples for full RAG and retrieve-only modes
+  - Trace file format specification
+  - Evaluation workflow and best practices
+  - Assessment criteria for retrieval and generation quality
+  - Troubleshooting guide
+
+#### Trace Features
+- **Full RAG Mode**: Captures retrieval + generation with LLM
+- **Retrieve-Only Mode**: Inspects chunks without LLM (isolates retrieval issues)
+- **Structured JSON Output**: Session metadata, query details, context metadata
+- **Interactive Assessment**: Review and document findings for each query
+- **Configurable**: Custom top-k, model selection, output directory
+
+#### Use Cases
+- Build evaluation datasets from real usage
+- Debug retrieval quality issues
+- Test different configurations (top-k, models)
+- Assess answer correctness and citation accuracy
+- Identify content gaps in corpus
+
 ### Added - Data Analysis (2026-02-20)
 
 #### Quantitative Analysis
