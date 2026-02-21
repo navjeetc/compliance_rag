@@ -184,13 +184,20 @@ def query_pipeline(pipeline: Pipeline, question: str, retrieve_only: bool = Fals
     Returns:
         Dict with retrieved_documents and answer (if full RAG)
     """
+    # Run pipeline - include_outputs_from is critical to get retriever results!
     if retrieve_only:
-        result = pipeline.run({"text_embedder": {"text": question}})
+        result = pipeline.run(
+            {"text_embedder": {"text": question}},
+            include_outputs_from={"text_embedder", "retriever"}
+        )
     else:
-        result = pipeline.run({
-            "text_embedder": {"text": question},
-            "prompt_builder": {"question": question}
-        })
+        result = pipeline.run(
+            {
+                "text_embedder": {"text": question},
+                "prompt_builder": {"question": question}
+            },
+            include_outputs_from={"text_embedder", "retriever", "prompt_builder", "llm"}
+        )
     
     # Extract retrieved documents
     documents = result.get("retriever", {}).get("documents", [])
@@ -198,7 +205,9 @@ def query_pipeline(pipeline: Pipeline, question: str, retrieve_only: bool = Fals
     # Extract answer if full RAG
     answer = None
     if not retrieve_only:
-        answer = result.get("llm", {}).get("replies", [{}])[0].get("content", "")
+        replies = result.get("llm", {}).get("replies", [])
+        if replies:
+            answer = replies[0].content if hasattr(replies[0], 'content') else str(replies[0])
     
     return {
         "retrieved_documents": documents,
