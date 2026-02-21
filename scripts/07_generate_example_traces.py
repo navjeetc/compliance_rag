@@ -246,7 +246,24 @@ def generate_traces(
         if not retrieve_only:
             replies = result.get("llm", {}).get("replies", [])
             if replies:
-                answer = replies[0].content if hasattr(replies[0], 'content') else str(replies[0])
+                first_reply = replies[0]
+                content = getattr(first_reply, "content", first_reply)
+                if isinstance(content, list):
+                    text_parts = []
+                    for item in content:
+                        item_text = getattr(item, "text", None)
+                        if item_text is None:
+                            if isinstance(item, dict) and "text" in item:
+                                item_text = item["text"]
+                            elif isinstance(item, str):
+                                item_text = item
+                        if item_text:
+                            text_parts.append(item_text)
+                    answer = "".join(text_parts) if text_parts else str(content)
+                elif isinstance(content, str):
+                    answer = content
+                else:
+                    answer = str(content)
         
         print(f"   📚 Retrieved {len(contexts)} chunks")
         if answer:
