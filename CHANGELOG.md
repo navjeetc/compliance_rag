@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - Trace Analysis Findings (2026-02-21)
+
+#### Baseline Trace Analysis
+- Created `analysis/trace_findings.md` — comprehensive findings document from Week 1 baseline traces
+  - Covers 4 JSON session files + annotated Week 1 submission traces (7 unique queries)
+  - Documents what works well: generation quality, cross-framework retrieval, relevance scores
+  - Documents 4 specific retrieval issues with trace evidence (session IDs, split IDs, scores)
+  - Root cause analysis for each issue
+  - Prioritized improvement roadmap for Week 2
+
+#### Issues Documented
+1. **NIST AU-9 sourced from CJIS** — framework contamination due to no metadata filtering; reproduces identically across 2 sessions (split_id 56, score 0.73989207)
+2. **Password query retrieves appendix, not base policy** — chunking bias toward CJIS mobile device appendix over Section 5.6.2.1; all 5 chunks from same appendix region
+3. **NIST bibliography chunks in results** — reference/bibliography pages indexed as content; appears as rank 3 in NIST audit log query
+4. **Query phrasing sensitivity** — adding "in HIPAA" changes top result from CJIS to HIPAA; no metadata filtering or query routing
+
+#### Key Finding
+Generation layer is consistently good (grounded, honest, no hallucinations). The bottleneck is retrieval. Fixing retrieval will directly improve end-to-end quality without changes to the generation layer.
+
 ### Added - Trace Capture System (2026-02-20)
 
 #### Session Trace Capture
