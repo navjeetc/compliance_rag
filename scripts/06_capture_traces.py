@@ -166,8 +166,7 @@ Provide a detailed answer with specific citations.""")
     ))
     
     pipeline.add_component("llm", GoogleGenAIChatGenerator(
-        model=llm_model,
-        generation_config={"temperature": 0.1}
+        model=llm_model
     ))
     
     pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
