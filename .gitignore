@@ -58,3 +58,6 @@ qdrant_storage/
 # Test outputs
 traces/*.md
 !traces/.gitkeep
+
+# Claude Code local config
+.claude/
