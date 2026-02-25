@@ -25,3 +25,6 @@ traces/*.json
 # Exclude analysis outputs
 analysis/*.json
 analysis/*.parquet
+
+# Exclude prequalify script (validation tool, not part of submission)
+prequalify.py
